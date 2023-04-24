@@ -33,6 +33,10 @@ interface WordProps {
 }
 
 const Content = ({ resData }: WordProps) => {
+  if (!resData) {
+    return null;
+  }
+
   const nounData = resData.meanings.find((obj) => obj.partOfSpeech === "noun");
   const verbData = resData.meanings.find((obj) => obj.partOfSpeech === "verb");
 
