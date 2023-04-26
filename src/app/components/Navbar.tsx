@@ -56,6 +56,9 @@ const Navbar = () => {
     if (storedDarkThemeState && storedDarkThemeState === "off") {
       setCheckedValue(false);
     }
+    if(!storedDarkThemeState) {
+      setTheme('light')
+    }
   }, []);
 
   return (
