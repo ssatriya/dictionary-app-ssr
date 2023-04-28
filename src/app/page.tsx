@@ -1,9 +1,8 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import Search from "./components/Search";
 import Content from "./components/Content";
 import Navbar from "./components/Navbar";
 import ErrorMessage from "./components/ErrorMessage";
+import { Suspense } from "react";
 
 interface pageProps {
   searchParams: {
@@ -56,8 +55,8 @@ const fetchData = async (keyword?: string) => {
     );
     const data = (await res.json()) as Dictionary[];
     return data;
-  } catch (error) {
-    // throw new Error(error);
+  } catch (error: any) {
+    return error;
   }
 };
 
@@ -66,8 +65,6 @@ export default async function Home({ searchParams: { word } }: pageProps) {
 
   return (
     <main>
-      <Navbar />
-      <Search defaultWord={word} />
       {res && <Content resData={res[0]} />}
       {res && !res.length && word && <ErrorMessage />}
     </main>

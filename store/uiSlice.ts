@@ -6,7 +6,7 @@ interface State {
 }
 
 const initialState: State = {
-  font: "sans",
+  font: "mono",
   theme: "light",
 };
 

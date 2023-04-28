@@ -1,4 +1,5 @@
 import React from "react";
+
 import Word from "./Word";
 import Noun from "./Noun";
 import Verb from "./Verb";
@@ -45,7 +46,7 @@ const Content = ({ resData }: WordProps) => {
       <Word
         word={resData.word}
         phonetic={resData.phonetic}
-        phonetics={resData.phonetics[0].audio}
+        phonetics={resData.phonetics[0]?.audio}
       />
       {nounData && <Noun noun={nounData} />}
       {verbData && <Verb verb={verbData} />}

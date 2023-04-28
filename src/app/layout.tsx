@@ -5,6 +5,8 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 import Providers from "./components/Providers";
+import Navbar from "./components/Navbar";
+import Search from "./components/Search";
 
 export const metadata = {
   title: "Dictionary App",
@@ -20,7 +22,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <Providers>
-          <Container>{children}</Container>
+          <Container>
+            <Navbar />
+            <Search />
+            {children}
+          </Container>
         </Providers>
       </body>
     </html>

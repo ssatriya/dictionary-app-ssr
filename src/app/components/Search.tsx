@@ -1,19 +1,24 @@
 "use client";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 
-interface searchProps {
-  defaultWord?: string;
-}
-
-const Search = ({ defaultWord }: searchProps) => {
-  const [searchTerm, setSearchTerm] = useState<string>(defaultWord || "");
+const Search = () => {
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [hasError, setHasError] = useState<boolean>(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const params = searchParams.get("word");
+
+  useEffect(() => {
+    if (!params) {
+      setSearchTerm("");
+    }
+  }, [params]);
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
